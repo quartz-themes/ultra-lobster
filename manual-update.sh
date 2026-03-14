@@ -501,17 +501,17 @@ for i in "${themes[@]}"; do
   git commit -a -m "Updated to latest template."
 
   # replace pageTitle: "Quartz 5", with pageTitle: "${i}", in `quartz.config.ts`
-  sed -i -e 's|pageTitle: Quartz 5|pageTitle: '${i}'|' quartz.config.yaml
-  sed -i -e 's|pageTitle: Quartz 5|pageTitle: '${i}'|' quartz.config.default.yaml
+  sed -i -e 's|pageTitle: .*|pageTitle: '${i}'|' quartz.config.yaml
+  sed -i -e 's|pageTitle: .*|pageTitle: '${i}'|' quartz.config.default.yaml
 
   # replace baseUrl: "quartz.jzhao.xyz", with baseUrl: "quartz-themes.github.io/${i}", in `quartz.config.ts`
-  sed -i -e 's|baseUrl: quartz-themes.github.io$|baseUrl: quartz-themes.github.io/'${i}'|' quartz.config.yaml
-  sed -i -e 's|baseUrl: v5.quartz-1h4.pages.dev$|baseUrl: quartz-themes.github.io/'${i}'|' quartz.config.default.yaml
+  sed -i -e 's|baseUrl: .*|baseUrl: quartz-themes.github.io/'${i}'|' quartz.config.yaml
+  sed -i -e 's|baseUrl: .*|baseUrl: quartz-themes.github.io/'${i}'|' quartz.config.default.yaml
 
-  sed -i -e 's|theme: default|theme: '${THEME}'|' quartz.config.yaml
-  sed -i -e 's|theme: default|theme: '${THEME}'|' quartz.config.default.yaml
-  sed -i -e 's|variation: null|variation: '${VARIATION}'|' quartz.config.yaml
-  sed -i -e 's|variation: null|variation: '${VARIATION}'|' quartz.config.default.yaml
+  sed -i -e 's|      theme: [a-zA-Z].*|      theme: '${THEME}'|' quartz.config.yaml
+  sed -i -e 's|      theme: [a-zA-Z].*|      theme: '${THEME}'|' quartz.config.default.yaml
+  sed -i -e 's|      variation: .*|      variation: '${VARIATION}'|' quartz.config.yaml
+  sed -i -e 's|      variation: .*|      variation: '${VARIATION}'|' quartz.config.default.yaml
   # replace ---.*?Quartz is a fast, with ---\n\nQuartz is a fase, in `docs/index.md` using perl
   # perl -0777 -i -pe 's/\n---.*?Quartz is a fast/\n---\n\nQuartz is a fast/' docs/index.md
 
